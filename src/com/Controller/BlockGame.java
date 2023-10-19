@@ -18,14 +18,17 @@ public class BlockGame {
 
     public void run()
     {
-        gameRenderer.showWindow();
+        System.out.println("2");
+        gameRenderer.setupWindow();
+        gameRenderer.showMainMenu();
+        
         previousTime = System.currentTimeMillis();
-        isRunning = false;
+        isRunning = true;
 
-        while (isRunning)
-        {
-            gameRenderer.TESTSHOWMENU();
-        }
+        // while (isRunning)
+        // {
+        //     gameRenderer.TESTSHOWMENU();
+        // }
 
     }
   

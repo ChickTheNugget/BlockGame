@@ -19,13 +19,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     KeyHandler keyHandler = new KeyHandler();
 
-    Sound sound = new Sound();
 
     Thread gameThread;
 
     Player player = new Player(this);
     Walls walls = new Walls(this);
     Block[] blocks;
+
+    Sound sound = new Sound();
 
     public GamePanel(String level) {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -48,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void run() {
         double interval = 1000000000 / fps;
         double nextInterval = System.nanoTime() + interval;
-        playMusic(1);
+        
         while (gameThread != null) {
 
             update();

@@ -5,6 +5,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import com.GameLogic.GamePanel;
+import com.GameLogic.Sound;
+
 
 public class Menu extends JPanel implements ActionListener {
 
@@ -17,6 +19,8 @@ public class Menu extends JPanel implements ActionListener {
     private JPanel currentScreen;
     private JPanel mainMenu;
     private JPanel levelScreen;
+
+    Sound sound = new Sound();
 
     public Menu(int screenWidth, int screenHeight) {
         this.screenWidth = screenWidth;
@@ -31,7 +35,7 @@ public class Menu extends JPanel implements ActionListener {
     }
 
     private void prepareMainMenu() {
-
+        playMusic(1);
         Label title = new Label("BlockGame");
         title.setAlignment(Label.CENTER);
         JPanel panel = new JPanel();
@@ -150,6 +154,19 @@ public class Menu extends JPanel implements ActionListener {
         this.remove(this.currentScreen);
         currentScreen = screen;
         this.add(currentScreen);
+    }
+
+    public void playMusic(int soundIndex) {
+        sound.setFile(soundIndex);
+        sound.play();
+        sound.loop();
+    }
+    public void stopMusic() {
+        sound.stop();
+    }
+    public void playClip(int soundIndex) {
+        sound.setFile(soundIndex);
+        sound.play();
     }
 
 }

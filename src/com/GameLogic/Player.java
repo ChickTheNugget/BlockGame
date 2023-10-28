@@ -3,9 +3,12 @@ package com.GameLogic;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import com.UI.Menu;
+
 public class Player {
 
     GamePanel gamePanel;
+    
 
     private int xPosition;
     private int yPosition;
@@ -189,5 +192,6 @@ public class Player {
         }
         return true;
     }
+    
 
 }

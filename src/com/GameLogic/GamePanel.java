@@ -19,6 +19,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     KeyHandler keyHandler = new KeyHandler();
 
+    Sound sound = new Sound();
+
     Thread gameThread;
 
     Player player = new Player(this);
@@ -34,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
         blocks = new Block[20 * 20];
         LevelPath = level;
         walls.getWall();
+        
     }
 
     public void startThread() {
@@ -45,7 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void run() {
         double interval = 1000000000 / fps;
         double nextInterval = System.nanoTime() + interval;
-
+        playMusic(1);
         while (gameThread != null) {
 
             update();
@@ -92,6 +95,19 @@ public class GamePanel extends JPanel implements Runnable {
         walls.drawWall(g2);
         player.drawPlayer(g2);
         g2.dispose();
+    }
+
+    public void playMusic(int soundIndex) {
+        sound.setFile(soundIndex);
+        sound.play();
+        sound.loop();
+    }
+    public void stopMusic() {
+        sound.stop();
+    }
+    public void playClip(int soundIndex) {
+        sound.setFile(soundIndex);
+        sound.play();
     }
 
 }

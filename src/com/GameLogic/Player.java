@@ -113,6 +113,7 @@ public class Player {
                             && checkBounds(wallX + 1, wallY - speed)
                             && checkBounds(wallX + gamePanel.tileSize - 1, wallY - speed)) {
                         block.yPosition -= speed;
+                        gamePanel.playClip(0);
                     }
                 }
                 if (direction.equals("down")) {
@@ -121,6 +122,7 @@ public class Player {
                             && isMovable(wallX + 1, wallY + speed + gamePanel.tileSize)
                             && isMovable(wallX + gamePanel.tileSize - 1, wallY + speed + gamePanel.tileSize)) {
                         block.yPosition += speed;
+                        gamePanel.playClip(0);
                     }
                 }
                 if (direction.equals("left")) {
@@ -129,6 +131,7 @@ public class Player {
                             && checkBounds(wallX - speed, wallY + 1)
                             && checkBounds(wallX - speed, wallY + gamePanel.tileSize - 1)) {
                         block.xPosition -= speed;
+                        gamePanel.playClip(0);
                     }
                 }
                 if (direction.equals("right")) {
@@ -137,6 +140,7 @@ public class Player {
                             && checkBounds(wallX + speed + gamePanel.tileSize, wallY + 1)
                             && checkBounds(wallX + speed + gamePanel.tileSize, wallY + gamePanel.tileSize - 1)) {
                         block.xPosition += speed;
+                        gamePanel.playClip(0);
                     }
                 }
                 return 3;

@@ -108,34 +108,34 @@ public class Player {
                     xPos, yPos, gamePanel.tileSize / 2, gamePanel.tileSize / 2)) {
                 System.out.println(3);
                 if (direction.equals("up")) {
-                    if (!isImovable(wallX, wallY - speed)
-                            && !isImovable(wallX + gamePanel.tileSize, wallY - speed)
-                            && checkBounds(wallX, wallY - speed)
-                            && checkBounds(wallX + gamePanel.tileSize, wallY - speed)) {
+                    if (isMovable(wallX + 1, wallY - speed)
+                            && isMovable(wallX + gamePanel.tileSize - 1, wallY - speed)
+                            && checkBounds(wallX + 1, wallY - speed)
+                            && checkBounds(wallX + gamePanel.tileSize - 1, wallY - speed)) {
                         block.yPosition -= speed;
                     }
                 }
                 if (direction.equals("down")) {
-                    if ((!isImovable(wallX, wallY + speed + gamePanel.tileSize)
-                            && !isImovable(wallX + gamePanel.tileSize, wallY + speed + gamePanel.tileSize))
-                            && checkBounds(wallX, wallY + speed + gamePanel.tileSize)
-                            && checkBounds(wallX + gamePanel.tileSize, wallY + speed + gamePanel.tileSize)) {
+                    if ((isMovable(wallX + 1, wallY + speed + gamePanel.tileSize)
+                            && isMovable(wallX + gamePanel.tileSize - 1, wallY + speed + gamePanel.tileSize))
+                            && isMovable(wallX + 1, wallY + speed + gamePanel.tileSize)
+                            && isMovable(wallX + gamePanel.tileSize - 1, wallY + speed + gamePanel.tileSize)) {
                         block.yPosition += speed;
                     }
                 }
                 if (direction.equals("left")) {
-                    if (!isImovable(wallX - speed, wallY)
-                            && !isImovable(wallX - speed, wallY + gamePanel.tileSize)
-                            && checkBounds(wallX - speed, wallY)
-                            && checkBounds(wallX - speed, wallY + gamePanel.tileSize)) {
+                    if (isMovable(wallX - speed, wallY + 1)
+                            && isMovable(wallX - speed, wallY + gamePanel.tileSize - 1)
+                            && checkBounds(wallX - speed, wallY + 1)
+                            && checkBounds(wallX - speed, wallY + gamePanel.tileSize - 1)) {
                         block.xPosition -= speed;
                     }
                 }
                 if (direction.equals("right")) {
-                    if (!isImovable(wallX + speed + gamePanel.tileSize, wallY)
-                            && !isImovable(wallX + speed + gamePanel.tileSize, wallY + gamePanel.tileSize)
-                            && checkBounds(wallX + speed + gamePanel.tileSize, wallY)
-                            && checkBounds(wallX + speed + gamePanel.tileSize, wallY + gamePanel.tileSize)) {
+                    if (isMovable(wallX + speed + gamePanel.tileSize, wallY + 1)
+                            && isMovable(wallX + speed + gamePanel.tileSize, wallY + gamePanel.tileSize - 1)
+                            && checkBounds(wallX + speed + gamePanel.tileSize, wallY + 1)
+                            && checkBounds(wallX + speed + gamePanel.tileSize, wallY + gamePanel.tileSize - 1)) {
                         block.xPosition += speed;
                     }
                 }
@@ -145,22 +145,22 @@ public class Player {
         return 0;
     }
 
-    public boolean isImovable(int x, int y) {
+    public boolean isMovable(int x, int y) {
         if (x > gamePanel.screenWidth || x < 0 || y > gamePanel.screenHeight || y < 0) {
-            return false;
+            return true;
         }
         for (int i = 0; i < 20 * 20; i++) {
             Block current = gamePanel.blocks[i];
-            if (current.xPosition < x && x < current.xPosition + gamePanel.tileSize && current.yPosition < y
-                    && y < current.yPosition + gamePanel.tileSize) {
+            if (current.xPosition <= x && x <= current.xPosition + gamePanel.tileSize && current.yPosition <= y
+                    && y <= current.yPosition + gamePanel.tileSize) {
                 if (current.blockType == 1) {
-                    return true;
-                } else {
                     return false;
+                } else {
+                    return true;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     public boolean squareOverlap(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {

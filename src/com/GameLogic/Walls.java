@@ -3,6 +3,7 @@ package com.GameLogic;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -28,11 +29,12 @@ public class Walls {
     public void getImage() {
         try {
             walls[0] = new Wall();
-            walls[0].wallImage = ImageIO.read(getClass().getResourceAsStream("wall.png"));
+            walls[0].wallImage = ImageIO.read(new File("src/com/assets/wall.png"));
             walls[1] = new Wall();
-            walls[1].wallImage = ImageIO.read(getClass().getResourceAsStream("floor.png"));
+            walls[1].wallImage = ImageIO.read(new File("src/com/assets/floor.png"));
             walls[2] = new Wall();
-            walls[2].wallImage = ImageIO.read(getClass().getResourceAsStream("movable_wall.png"));
+            walls[2].wallImage = ImageIO
+                    .read(new File("src/com/assets/movable_wall.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,11 +97,6 @@ public class Walls {
                 g2.drawImage(walls[0].wallImage, gamePanel.blocks[wall].xPosition,
                         gamePanel.blocks[wall].yPosition,
                         gamePanel.tileSize, gamePanel.tileSize, null);
-            }
-            if (gamePanel.blocks[wall].blockType == 2) {
-                // g2.drawImage(walls[1].wallImage, gamePanel.blocks[wall].xPosition,
-                // gamePanel.blocks[wall].yPosition,
-                // gamePanel.tileSize, gamePanel.tileSize, null);
             }
         }
         for (Block block : movableWalls) {

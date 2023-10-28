@@ -81,13 +81,24 @@ public class Menu extends JPanel implements ActionListener {
         levels.add(level1, constraints);
 
         LevelButton level2 = new LevelButton("2", 25);
+        level2.setActionCommand("level2");
+        level2.addActionListener(this);
         levels.add(level2, constraints);
 
         LevelButton level3 = new LevelButton("3", 25);
+        level3.setActionCommand("level3");
+        level3.addActionListener(this);
         levels.add(level3, constraints);
 
         LevelButton level4 = new LevelButton("4", 25);
+        level4.setActionCommand("level4");
+        level4.addActionListener(this);
         levels.add(level4, constraints);
+
+        LevelButton level5 = new LevelButton("5", 25);
+        level5.setActionCommand("level5");
+        level5.addActionListener(this);
+        levels.add(level5, constraints);
 
         levelScreen.add(levels);
         levelScreen.add(Box.createGlue());
@@ -98,21 +109,37 @@ public class Menu extends JPanel implements ActionListener {
             changeScreen(levelScreen);
         } else if (menuSelect.equals(e.getActionCommand())) {
             changeScreen(mainMenu);
-        } else if ("level1".equals(e.getActionCommand())) {
-            GamePanel panel = new GamePanel("src/com/levels/wall1.txt");
+        } else {
             JFrame frame = new JFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setResizable(false);
             frame.setTitle("BlockGame");
 
-            frame.add(panel);
-
+            if ("level1".equals(e.getActionCommand())) {
+                GamePanel panel = new GamePanel("src/com/levels/wall1.txt");
+                frame.add(panel);
+                panel.startThread();
+            } else if ("level2".equals(e.getActionCommand())) {
+                GamePanel panel = new GamePanel("src/com/levels/wall2.txt");
+                frame.add(panel);
+                panel.startThread();
+            } else if ("level3".equals(e.getActionCommand())) {
+                GamePanel panel = new GamePanel("src/com/levels/wall3.txt");
+                frame.add(panel);
+                panel.startThread();
+            } else if ("level4".equals(e.getActionCommand())) {
+                GamePanel panel = new GamePanel("src/com/levels/wall4.txt");
+                frame.add(panel);
+                panel.startThread();
+            } else if ("level5".equals(e.getActionCommand())) {
+                GamePanel panel = new GamePanel("src/com/levels/wall5.txt");
+                frame.add(panel);
+                panel.startThread();
+            }
             frame.pack();
 
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
 
-            panel.startThread();
         }
 
         this.validate();

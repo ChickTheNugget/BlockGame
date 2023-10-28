@@ -1,6 +1,6 @@
 package com.Controller;
 
-import com.View.GameRenderer;
+import com.GameRenderer;
 
 import javax.swing.*;
 
@@ -15,17 +15,11 @@ public class BlockGame {
     }
 
     public void run() {
-        System.out.println("2");
         gameRenderer.setupWindow();
         gameRenderer.showMainMenu();
 
         previousTime = System.currentTimeMillis();
         isRunning = true;
-
-        // while (isRunning)
-        // {
-        // gameRenderer.TESTSHOWMENU();
-        // }
 
     }
 

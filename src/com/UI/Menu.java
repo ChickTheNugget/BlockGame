@@ -7,7 +7,6 @@ import javax.swing.*;
 import com.GameLogic.GamePanel;
 import com.GameLogic.Sound;
 
-
 public class Menu extends JPanel implements ActionListener {
 
     public static String levelSelect = "levelSelect";
@@ -119,23 +118,23 @@ public class Menu extends JPanel implements ActionListener {
             frame.setTitle("BlockGame");
 
             if ("level1".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall1.txt");
+                GamePanel panel = new GamePanel("src/com/levels/wall1.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             } else if ("level2".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall2.txt");
+                GamePanel panel = new GamePanel("src/com/levels/wall2.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             } else if ("level3".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall3.txt");
+                GamePanel panel = new GamePanel("src/com/levels/wall3.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             } else if ("level4".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall4.txt");
+                GamePanel panel = new GamePanel("src/com/levels/wall4.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             } else if ("level5".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall5.txt");
+                GamePanel panel = new GamePanel("src/com/levels/wall5.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             }
@@ -161,9 +160,11 @@ public class Menu extends JPanel implements ActionListener {
         sound.play();
         sound.loop();
     }
+
     public void stopMusic() {
         sound.stop();
     }
+
     public void playClip(int soundIndex) {
         sound.setFile(soundIndex);
         sound.play();

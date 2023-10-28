@@ -8,7 +8,6 @@ import com.UI.Menu;
 public class Player {
 
     GamePanel gamePanel;
-    
 
     private int xPosition;
     private int yPosition;
@@ -71,6 +70,11 @@ public class Player {
 
     public int getPlayerSpeed() {
         return speed;
+    }
+
+    public boolean atEnd() {
+        return (xPosition > gamePanel.tileSize * (gamePanel.numColumns - 1)
+                && yPosition > gamePanel.tileSize * (gamePanel.numRows - 1));
     }
 
     public void drawPlayer(Graphics2D g) {
@@ -192,6 +196,5 @@ public class Player {
         }
         return true;
     }
-    
 
 }

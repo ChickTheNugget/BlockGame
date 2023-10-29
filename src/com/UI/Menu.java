@@ -159,23 +159,23 @@ public class Menu extends JPanel implements ActionListener {
             frame.setTitle("BlockGame");
 
             if ("level1".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall1.txt", frame);
+                GamePanel panel = new GamePanel("com/assets/levels/wall1.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             } else if ("level2".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall2.txt", frame);
+                GamePanel panel = new GamePanel("com/assets/levels/wall2.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             } else if ("level3".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall3.txt", frame);
+                GamePanel panel = new GamePanel("com/assets/levels/wall3.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             } else if ("level4".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall4.txt", frame);
+                GamePanel panel = new GamePanel("com/assets/levels/wall4.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             } else if ("level5".equals(e.getActionCommand())) {
-                GamePanel panel = new GamePanel("src/com/levels/wall5.txt", frame);
+                GamePanel panel = new GamePanel("com/assets/levels/wall5.txt", frame);
                 frame.add(panel);
                 panel.startThread();
             }

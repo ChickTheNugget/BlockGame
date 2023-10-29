@@ -8,4 +8,4 @@ To compile: ``` javac Main.Java ```
 
 To finally run it: ``` java Main ```
 
-With pictures sounds from [prixabay.com](pixabay.com)
+With pictures sounds from [pixabay.com](pixabay.com)

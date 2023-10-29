@@ -19,6 +19,8 @@ public class GameRenderer extends JFrame {
      */
     public GameRenderer() {
         setTitle("BlockGame");
+        setResizable(false);
+        setLocationRelativeTo(null);
 
     }
 
@@ -29,7 +31,8 @@ public class GameRenderer extends JFrame {
         frame.setSize(screenWidth, screenHeight);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
     }
 
     /**

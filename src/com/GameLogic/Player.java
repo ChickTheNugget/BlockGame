@@ -30,9 +30,10 @@ public class Player {
         yPosition = 0;
         speed = 4;
         try {
-            playerImage = ImageIO.read(new File("src/com/assets/character.png"));
+            playerImage = ImageIO.read(new File("com/assets/character.png"));
         } catch (Exception e) {
-            // TODO: handle exception
+            System.err.println("File not found: " + e);
+            System.exit(e.hashCode());
         }
     }
 

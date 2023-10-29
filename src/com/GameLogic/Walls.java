@@ -36,15 +36,15 @@ public class Walls {
     public void getImage() {
         try {
             walls[0] = new Wall();
-            walls[0].wallImage = ImageIO.read(new File("src/com/assets/wall.png"));
+            walls[0].wallImage = ImageIO.read(getClass().getResource("/com/assets/wall.png"));
             walls[1] = new Wall();
-            walls[1].wallImage = ImageIO.read(new File("src/com/assets/floor.png"));
+            walls[1].wallImage = ImageIO.read(getClass().getResource("/com/assets/floor.png"));
             walls[2] = new Wall();
             walls[2].wallImage = ImageIO
-                    .read(new File("src/com/assets/movable_wall.png"));
+                    .read(getClass().getResource("/com/assets/movable_wall.png"));
             walls[3] = new Wall();
             walls[3].wallImage = ImageIO
-                    .read(new File("src/com/assets/win_field.png"));
+                    .read(getClass().getResource("/com/assets/win_field.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }

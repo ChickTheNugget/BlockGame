@@ -55,7 +55,6 @@ public class Walls {
      */
     public void getWall() {
         try {
-            System.out.println(1);
             File wall = new File(gamePanel.levelPath);
             if (!wall.exists()) {
                 System.err.println("Map not found");

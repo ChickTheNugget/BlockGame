@@ -20,6 +20,8 @@ public class GamePanel extends JPanel implements Runnable {
     Frame parentFrame;
     String LevelPath;
 
+    boolean notWon = true;
+
     KeyHandler keyHandler = new KeyHandler();
 
     Thread gameThread;
@@ -90,10 +92,11 @@ public class GamePanel extends JPanel implements Runnable {
         if (keyHandler.pressedRIGHT) {
             player.setXPosition(player.getPlayerX(), player.getPlayerSpeed());
         }
-        if (player.atEnd()) {
+        if (player.atEnd() && notWon) {
+            notWon = false;
             // play sound pls
-            // playClip(2);
-            //clip kinda weird
+            playClip(2);
+            // clip kinda weird
             parentFrame.dispose();
         }
     }

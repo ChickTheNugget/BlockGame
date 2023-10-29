@@ -11,8 +11,9 @@ public class Sound {
     URL soundURL[] = new URL[30];
 
     public Sound() {
-        soundURL[0] = getClass().getResource("/com/assets/blip.wav"); 
+        soundURL[0] = getClass().getResource("/com/assets/box_push.wav"); 
         soundURL[1] = getClass().getResource("/com/assets/music.wav"); 
+        soundURL[2] = getClass().getResource("/com/assets/winsound.wav"); 
     }
     public void setFile(int sound) {
         try {

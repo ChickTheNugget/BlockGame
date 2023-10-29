@@ -73,8 +73,13 @@ public class Player {
     }
 
     public boolean atEnd() {
-        return (xPosition > gamePanel.tileSize * (gamePanel.numColumns - 1)
-                && yPosition > gamePanel.tileSize * (gamePanel.numRows - 1));
+        if (xPosition > gamePanel.tileSize * (gamePanel.numColumns - 1)
+                && yPosition > gamePanel.tileSize * (gamePanel.numRows - 1) == true){
+                
+                return true;
+        }
+        return false;
+
     }
 
     public void drawPlayer(Graphics2D g) {

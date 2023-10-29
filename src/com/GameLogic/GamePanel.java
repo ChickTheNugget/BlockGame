@@ -92,6 +92,8 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (player.atEnd()) {
             // play sound pls
+            // playClip(2);
+            //clip kinda weird
             parentFrame.dispose();
         }
     }

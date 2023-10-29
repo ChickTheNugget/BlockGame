@@ -2,6 +2,11 @@ package com.GameLogic;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
 
 import com.UI.Menu;
 
@@ -12,14 +17,19 @@ public class Player {
     private int xPosition;
     private int yPosition;
     private int speed;
+    private BufferedImage playerImage;
 
     public Player(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         xPosition = 0;
         yPosition = 0;
         speed = 4;
+        try {
+            playerImage = ImageIO.read(new File("src/com/assets/character.png"));
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
-
     public void respawn() {
         setXPosition(0, 0);
         setYPosition(0, 0);
@@ -83,8 +93,9 @@ public class Player {
     }
 
     public void drawPlayer(Graphics2D g) {
-        g.setColor(Color.black);
-        g.fillRect(xPosition, yPosition, gamePanel.tileSize / 2 + 2, gamePanel.tileSize / 2 + 2);
+        g.drawImage(playerImage, xPosition,
+                        yPosition,
+                        gamePanel.tileSize / 2 + 2,  gamePanel.tileSize / 2 + 2, null);
     }
 
     public boolean checkBounds(int xPos, int yPos) {

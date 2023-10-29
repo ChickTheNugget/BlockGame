@@ -19,7 +19,7 @@ public class Walls {
 
     public Walls(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-        walls = new Wall[3];
+        walls = new Wall[4];
         getImage();
         blocks = new Block[20 * 20];
         movableWalls = new ArrayList<>();
@@ -35,6 +35,9 @@ public class Walls {
             walls[2] = new Wall();
             walls[2].wallImage = ImageIO
                     .read(new File("src/com/assets/movable_wall.png"));
+            walls[3] = new Wall();
+            walls[3].wallImage = ImageIO
+                    .read(new File("src/com/assets/win_field.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,6 +98,11 @@ public class Walls {
         for (int wall = 0; wall < 20 * 20; wall++) {
             if (gamePanel.blocks[wall].blockType == 1) {
                 g2.drawImage(walls[0].wallImage, gamePanel.blocks[wall].xPosition,
+                        gamePanel.blocks[wall].yPosition,
+                        gamePanel.tileSize, gamePanel.tileSize, null);
+            }
+            if (wall == 20 * 20 - 1) {
+                g2.drawImage(walls[3].wallImage, gamePanel.blocks[wall].xPosition,
                         gamePanel.blocks[wall].yPosition,
                         gamePanel.tileSize, gamePanel.tileSize, null);
             }

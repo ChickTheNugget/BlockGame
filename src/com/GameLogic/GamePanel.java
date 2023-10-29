@@ -5,10 +5,13 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.WindowEvent;
-
 import javax.swing.JPanel;
 
+/**
+ * Represents an instance of a Level, responsible for rendering the game and
+ * updating the
+ * game state.
+ */
 public class GamePanel extends JPanel implements Runnable {
     final int tileSize = 40;
     final int numColumns = 20;
@@ -18,7 +21,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int fps = 60;
 
     Frame parentFrame;
-    String LevelPath;
+    String levelPath;
 
     boolean notWon = true;
 
@@ -32,6 +35,12 @@ public class GamePanel extends JPanel implements Runnable {
 
     Sound sound = new Sound();
 
+    /**
+     * Constructor for The GamePanel Class.
+     * 
+     * @param level the path to the file containing our level
+     * @param frame the frame the game will be rendered to
+     */
     public GamePanel(String level, Frame frame) {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.WHITE);
@@ -39,12 +48,15 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
         blocks = new Block[20 * 20];
-        LevelPath = level;
+        levelPath = level;
         walls.getWall();
 
         parentFrame = frame;
     }
 
+    /**
+     * Starts a new thread to run our Game.
+     */
     public void startThread() {
         gameThread = new Thread(this);
         gameThread.start();
@@ -70,26 +82,30 @@ public class GamePanel extends JPanel implements Runnable {
                 Thread.sleep((long) remaining);
                 nextInterval += interval;
 
-            } catch (Exception e) {
-                // TODO: handle exception
-
+            } catch (InterruptedException e) {
+                System.err.println("Error while trying to sleep: " + e);
+                e.printStackTrace();
+                System.exit(e.hashCode());
             }
 
         }
 
     }
 
+    /**
+     * Runs all the necessary details on each Frame to update the game state.
+     */
     public void update() {
-        if (keyHandler.pressedUP) {
+        if (keyHandler.pressedUp) {
             player.setYPosition(player.getPlayerY(), -player.getPlayerSpeed());
         }
-        if (keyHandler.pressedDOWN) {
+        if (keyHandler.pressedDown) {
             player.setYPosition(player.getPlayerY(), player.getPlayerSpeed());
         }
-        if (keyHandler.pressedLEFT) {
+        if (keyHandler.pressedLeft) {
             player.setXPosition(player.getPlayerX(), -player.getPlayerSpeed());
         }
-        if (keyHandler.pressedRIGHT) {
+        if (keyHandler.pressedRight) {
             player.setXPosition(player.getPlayerX(), player.getPlayerSpeed());
         }
         if (player.atEnd() && notWon) {
@@ -101,6 +117,11 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    /**
+     * Paints our GamePanel.
+     * 
+     * @param g a Handle to Graphics to draw our GamePanel
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -110,16 +131,31 @@ public class GamePanel extends JPanel implements Runnable {
         g2.dispose();
     }
 
+    /**
+     * Starts playing a sound on repeat.
+     * 
+     * @param soundIndex the index of the to be played sound
+     *                   in the list of sounds of our Sound instance
+     */
     public void playMusic(int soundIndex) {
         sound.setFile(soundIndex);
         sound.play();
         sound.loop();
     }
 
+    /**
+     * Stops a currently palying sound.
+     */
     public void stopMusic() {
         sound.stop();
     }
 
+    /**
+     * Plays a sound from its Sound instance once.
+     * 
+     * @param soundIndex the index of the to be played sound
+     *                   in the list of sounds of our Sound instance
+     */
     public void playClip(int soundIndex) {
         sound.setFile(soundIndex);
         sound.play();

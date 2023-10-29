@@ -3,13 +3,18 @@ package com.UI;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * A Button which is used to switch screens, this is done by the Menu.
+ */
 public class MenuButton extends JButton {
 
-    private int radius;
-
-    public MenuButton(String label, int radius) {
+    /**
+     * The constructor of the MenuButton.
+     * 
+     * @param label the Label that should be displayed on the Button
+     */
+    public MenuButton(String label) {
         super(label);
-        this.radius = radius;
 
         setForeground(Color.white);
         setFocusPainted(false);

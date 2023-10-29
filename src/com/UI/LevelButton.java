@@ -1,16 +1,20 @@
 package com.UI;
 
 import java.awt.Color;
-import java.awt.Graphics;
-
 import javax.swing.JButton;
 
+/**
+ * A Button for the level selection.
+ */
 public class LevelButton extends JButton {
-    int radius;
 
-    public LevelButton(String label, int radius) {
-        super(label);
-        this.radius = radius;
+    /**
+     * Constructor for the LevelButton.
+     * 
+     * @param level the level to which the button leads.
+     */
+    public LevelButton(String level) {
+        super(level);
 
         setForeground(Color.blue);
         setFocusPainted(false);

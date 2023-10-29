@@ -1,22 +1,26 @@
 package com.GameLogic;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import javax.imageio.ImageIO;
 
+/**
+ * Class storing the wall kinds, blocks and movable walls of a level.
+ */
 public class Walls {
     GamePanel gamePanel;
     Wall[] walls;
     Block[] blocks;
     ArrayList<Block> movableWalls;
 
+    /**
+     * Constructor for the Walls Class.
+     * 
+     * @param gamePanel the game for which it stores the wall information.
+     */
     public Walls(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         walls = new Wall[4];
@@ -26,6 +30,9 @@ public class Walls {
 
     }
 
+    /**
+     * Gets the images from their respective files and fills the walls array.
+     */
     public void getImage() {
         try {
             walls[0] = new Wall();
@@ -43,10 +50,13 @@ public class Walls {
         }
     }
 
+    /**
+     * Fills the blocks array with the data from the level file.
+     */
     public void getWall() {
         try {
             System.out.println(1);
-            File wall = new File(gamePanel.LevelPath);
+            File wall = new File(gamePanel.levelPath);
             if (!wall.exists()) {
                 System.err.println("Map not found");
                 System.exit(1);
@@ -79,11 +89,17 @@ public class Walls {
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.err.println("Error while retrieving files: " + e);
             e.printStackTrace();
+            System.exit(e.hashCode());
         }
     }
 
+    /**
+     * Draws a floor tile.
+     * 
+     * @param g2 handle to a Graphics2D instance to draw the floor.
+     */
     public void drawFloor(Graphics2D g2) {
         for (int row = 0; row < 20; row++) {
             for (int column = 0; column < 20; column++) {
@@ -94,6 +110,11 @@ public class Walls {
         }
     }
 
+    /**
+     * Draws a wall tile.
+     * 
+     * @param g2 handle to a Graphics2D instance to draw the wall.
+     */
     public void drawWall(Graphics2D g2) {
         for (int wall = 0; wall < 20 * 20; wall++) {
             if (gamePanel.blocks[wall].blockType == 1) {

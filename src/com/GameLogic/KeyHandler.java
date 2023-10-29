@@ -3,10 +3,17 @@ package com.GameLogic;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Handles key presses.
+ */
 public class KeyHandler implements KeyListener {
 
-    public boolean pressedUP, pressedDOWN, pressedLEFT, pressedRIGHT;
+    public boolean pressedUp;
+    public boolean pressedDown;
+    public boolean pressedLeft;
+    public boolean pressedRight;
 
+    // Not needed, hence empty
     @Override
     public void keyTyped(KeyEvent e) {
     }
@@ -15,16 +22,16 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_UP) {
-            pressedUP = true;
+            pressedUp = true;
         }
         if (key == KeyEvent.VK_DOWN) {
-            pressedDOWN = true;
+            pressedDown = true;
         }
         if (key == KeyEvent.VK_LEFT) {
-            pressedLEFT = true;
+            pressedLeft = true;
         }
         if (key == KeyEvent.VK_RIGHT) {
-            pressedRIGHT = true;
+            pressedRight = true;
         }
 
     }
@@ -33,16 +40,16 @@ public class KeyHandler implements KeyListener {
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_UP) {
-            pressedUP = false;
+            pressedUp = false;
         }
         if (key == KeyEvent.VK_DOWN) {
-            pressedDOWN = false;
+            pressedDown = false;
         }
         if (key == KeyEvent.VK_LEFT) {
-            pressedLEFT = false;
+            pressedLeft = false;
         }
         if (key == KeyEvent.VK_RIGHT) {
-            pressedRIGHT = false;
+            pressedRight = false;
         }
     }
 

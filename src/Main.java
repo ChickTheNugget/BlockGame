@@ -1,6 +1,9 @@
 
 import com.Controller.BlockGame;
 
+/**
+ * Main class, starts the Game.
+ */
 public class Main {
     public static void main(String[] args) {
         System.out.println("Title: Block Game");

@@ -2,13 +2,13 @@ package com.Controller;
 
 import com.GameRenderer;
 
-import javax.swing.*;
-
+/**
+ * Main Game class, it handes creating a new instance of our GameRenderer
+ * and the setup for it to function.
+ */
 public class BlockGame {
 
     private GameRenderer gameRenderer;
-    private long previousTime;
-    private boolean isRunning;
 
     public BlockGame() {
         gameRenderer = new GameRenderer();
@@ -17,10 +17,6 @@ public class BlockGame {
     public void run() {
         gameRenderer.setupWindow();
         gameRenderer.showMainMenu();
-
-        previousTime = System.currentTimeMillis();
-        isRunning = true;
-
     }
 
 }

@@ -18,6 +18,6 @@ public class MenuButton extends JButton {
 
         setForeground(Color.white);
         setFocusPainted(false);
-        setBackground(Color.LIGHT_GRAY);
+        setBackground(Color.orange);
     }
 }

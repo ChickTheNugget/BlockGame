@@ -16,9 +16,8 @@ public class LevelButton extends JButton {
     public LevelButton(String level) {
         super(level);
 
-        setForeground(Color.blue);
+        setForeground(Color.orange);
         setFocusPainted(false);
-        setBackground(Color.blue);
-        setContentAreaFilled(false);
+        setBackground(new Color(245, 144, 66, 255));
     }
 }

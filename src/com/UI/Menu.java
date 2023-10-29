@@ -2,7 +2,9 @@ package com.UI;
 
 import com.GameLogic.GamePanel;
 import com.GameLogic.Sound;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -23,6 +25,8 @@ public class Menu extends JPanel implements ActionListener {
     public static String levelSelect = "levelSelect";
     public static String menuSelect = "menuSelect";
 
+    private final Color backgroundColor;
+
     int screenWidth;
     int screenHeight;
 
@@ -42,10 +46,12 @@ public class Menu extends JPanel implements ActionListener {
      * @param screenHeight the height of the screen
      */
     public Menu(int screenWidth, int screenHeight) {
+        backgroundColor = Color.lightGray;
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
         this.setLayout(null);
 
+        setBackground(backgroundColor);
         prepareMainMenu();
         prepareLevelSelection();
         this.currentScreen = mainMenu;
@@ -59,11 +65,14 @@ public class Menu extends JPanel implements ActionListener {
     private void prepareMainMenu() {
         playMusic(1);
         Label title = new Label("BlockGame");
+        title.setFont(new Font("Sans Serif", Font.PLAIN, 50));
+        title.setBackground(backgroundColor);
         title.setAlignment(Label.CENTER);
         JPanel panel = new JPanel();
+
         panel.setLayout(new GridLayout(2, 1));
-        panel.setLocation(screenHeight / 2, screenHeight / 2);
-        panel.setSize(screenWidth / 3, 80);
+        panel.setLocation(screenHeight / 2 - 50, screenHeight / 2);
+        panel.setSize(screenWidth / 2, 80);
         panel.add(title);
 
         MenuButton levelButton = new MenuButton("Levels");
@@ -73,6 +82,7 @@ public class Menu extends JPanel implements ActionListener {
         levelButton.setSize(100, 30);
         panel.add(levelButton);
 
+        panel.setOpaque(false);
         mainMenu = panel;
     }
 
@@ -129,6 +139,7 @@ public class Menu extends JPanel implements ActionListener {
         level5.addActionListener(this);
         levels.add(level5, constraints);
 
+        levels.setBackground(backgroundColor);
         levelScreen.add(levels);
         levelScreen.add(Box.createGlue());
     }
